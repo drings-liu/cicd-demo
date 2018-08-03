@@ -1,2 +1,2 @@
-FROM hub.tencentyun.com/idreamsky/demo:ubuntu1604-nginx-php7-V2
+FROM hub.tencentyun.com/idreamsky/demo@$IMAGE_DIGEST
 ADD ./index.php /data/www
