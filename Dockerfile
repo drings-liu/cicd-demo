@@ -1,2 +1,2 @@
-FROM hub.tencentyun.com/idreamsky/demo@$IMAGE_DIGEST
+FROM hub.tencentyun.com/idreamsky/demo:php-demo
 ADD ./index.php /data/www
