@@ -1,0 +1,63 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    qcloud-app: php-demo
+  name: php-demo
+  namespace: idreamsky-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      qcloud-app: php-demo
+  template:
+    metadata:
+      labels:
+        qcloud-app: php-demo
+    spec:
+      containers:
+        image: hub.tencentyun.com/idreamsky/demo@$IMAGE_DIGEST
+        imagePullPolicy: Always
+        name: php-demo
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: "1"
+            memory: 1Gi
+      imagePullSecrets:
+      - name: qcloudregistrykey
+      - name: tencenthubkey
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    qcloud-app: php-demo
+  name: php-demo
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+  - name: tcp-80-80
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    qcloud-app: php-demo
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: game
+  namespace: default
+spec:
+  rules:
+  - host: cd.uu.cc
+    http:
+      paths:
+      - backend:
+          serviceName: php-demo
+          servicePort: 80
+        path: /
