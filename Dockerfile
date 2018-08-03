@@ -1,2 +1,2 @@
-FROM hub.tencentyun.com/idreamsky/demo:php-demo
+FROM hub.tencentyun.com/tencenthub/thub_docker_builder
 ADD ./index.php /data/www
