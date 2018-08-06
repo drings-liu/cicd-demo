@@ -1,2 +1,2 @@
-FROM hub.tencentyun.com/tencenthub/thub_docker_builder
+FROM hub.tencentyun.com/idreamsky/ng-base:ubuntu1604-nginx-php7-V5
 ADD ./index.php /data/www
