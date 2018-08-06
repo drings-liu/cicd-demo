@@ -16,7 +16,7 @@ spec:
         qcloud-app: php-demo
     spec:
       containers:
-        image: hub.tencentyun.com/idreamsky/demo@$IMAGE_DIGEST
+      - image: hub.tencentyun.com/idreamsky/demo@$IMAGE_DIGEST
         imagePullPolicy: Always
         name: php-demo
         resources:
@@ -36,7 +36,7 @@ metadata:
   labels:
     qcloud-app: php-demo
   name: php-demo
-  namespace: default
+  namespace: idreamsky-demo
 spec:
   type: NodePort
   ports:
@@ -50,8 +50,8 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: game
-  namespace: default
+  name: php-demo
+  namespace: idreamsky-demo
 spec:
   rules:
   - host: cd.uu.cc
