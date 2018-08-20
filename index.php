@@ -1,4 +1,4 @@
 <?php
 	echo "hello docker";
-   	phpinfo();
-	
+	echo "Qcloud 容器服务";
+ 
